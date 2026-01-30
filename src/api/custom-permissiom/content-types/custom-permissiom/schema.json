@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "custom_permissioms",
+  "info": {
+    "singularName": "custom-permissiom",
+    "pluralName": "custom-permissioms",
+    "displayName": "Custom Permission"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

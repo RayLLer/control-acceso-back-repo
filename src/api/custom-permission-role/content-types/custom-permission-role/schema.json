@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "custom_permission_roles",
+  "info": {
+    "singularName": "custom-permission-role",
+    "pluralName": "custom-permission-roles",
+    "displayName": "Custom Permission Role"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "role": {
+      "type": "integer"
+    },
+    "custom_permissions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::custom-permissiom.custom-permissiom"
+    }
+  }
+}
