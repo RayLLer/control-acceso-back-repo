@@ -1015,6 +1015,7 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    fcm: Schema.Attribute.String;
     foto: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true

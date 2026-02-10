@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "304990307525",
+    "project_id": "control-acceso-968c1",
+    "storage_bucket": "control-acceso-968c1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304990307525:android:a9094aab2fde54aef29cac",
+        "android_client_info": {
+          "package_name": "com.controlacceso"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAaQXm0BSqOHOH4nzEaQD1V2kC5O8m_kQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

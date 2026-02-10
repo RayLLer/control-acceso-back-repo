@@ -87,6 +87,9 @@
     },
     "ultimoPeriodoPago": {
       "type": "string"
+    },
+    "fcm": {
+      "type": "string"
     }
   }
 }
