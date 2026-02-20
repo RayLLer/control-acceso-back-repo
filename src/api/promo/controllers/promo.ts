@@ -14,14 +14,15 @@ export default factories.createCoreController('api::promo.promo', ({ strapi }) =
 			const users = await strapi.entityService.findMany('plugin::users-permissions.user', {
 				fields: ['fcm'],
 			});
-
+			console.debug('[promo] Promo response', response?.data);
 			const tokens = users
 				.map((u: any) => u.fcm)
 				.filter((t: any) => typeof t === 'string' && t.trim().length > 0);
 
 			if (tokens.length > 0) {
 				const title = 'Nueva Promoción';
-				const body = (response?.data?.attributes?.texto);
+				console.debug('[promo] Enviando notificaciones con texto', response?.data?.texto);
+				const body = (response?.data?.texto);
 
 				await sendToTokens(tokens, title, body, { promoId: response?.data?.id });
 			}

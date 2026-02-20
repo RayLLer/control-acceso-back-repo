@@ -129,3 +129,8 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+
+############################
+# CLAVE DE FIREBASE
+############################
+control-acceso-968c1-firebase-adminsdk-fbsvc-4195405dd2.json
