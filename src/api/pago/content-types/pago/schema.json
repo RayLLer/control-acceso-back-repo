@@ -14,13 +14,13 @@
     "monto": {
       "type": "decimal"
     },
-    "periodo_pagado": {
-      "type": "string"
-    },
     "users_permissions_user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "fecha_inicio_periodo": {
+      "type": "date"
     }
   }
 }
