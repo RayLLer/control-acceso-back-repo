@@ -46,6 +46,12 @@ export async function sendToTokens(tokens: string[], title: string, body: string
       // CAMBIO AQUÍ: de sendMulticast a sendEachForMulticast
       const resp = await admin.messaging().sendEachForMulticast(message);
 
+      console.log('[fcm] sendEachForMulticast response', {
+        successCount: resp.successCount,
+        failureCount: resp.failureCount,
+        responses: resp.responses,
+      });
+
       results.push({
         successCount: resp.successCount,
         failureCount: resp.failureCount,
@@ -84,6 +90,7 @@ export async function sendToTokens(tokens: string[], title: string, body: string
     const hint = 'Ensure `FCM_SERVER_KEY` env var is set to your Firebase Server (legacy) key from the Firebase Console (Project Settings → Cloud Messaging), or install/configure `firebase-admin` to use the HTTP v1 API.';
     throw new Error(`FCM error: ${res.status} ${text} - ${hint}`);
   }
+  console.log('[fcm] legacy FCM response', { status: res.status, body: text });
   return { provider: 'legacy', text };
 }
 
