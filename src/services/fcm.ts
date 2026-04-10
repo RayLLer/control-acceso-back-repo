@@ -94,6 +94,10 @@ export async function sendToTokens(tokens: string[], title: string, body: string
   return { provider: 'legacy', text };
 }
 
+function normalizeEnvPath(envPath: string) {
+  return envPath.trim().replace(/^"(.*)"$/, '$1').replace(/^'(.*)'$/, '$1');
+}
+
 async function initFirebaseAdminIfAvailable() {
   // Try env vars indicating a service account; if none, skip.
   const hasServiceAccountEnv = !!process.env.FCM_SERVICE_ACCOUNT || !!process.env.FCM_SERVICE_ACCOUNT_PATH || !!process.env.GOOGLE_APPLICATION_CREDENTIALS;
@@ -112,7 +116,8 @@ async function initFirebaseAdminIfAvailable() {
     }
 
     if (process.env.FCM_SERVICE_ACCOUNT_PATH) {
-      const p = path.resolve(process.cwd(), process.env.FCM_SERVICE_ACCOUNT_PATH);
+      const rawPath = normalizeEnvPath(process.env.FCM_SERVICE_ACCOUNT_PATH);
+      const p = path.resolve(process.cwd(), rawPath);
       const raw = fs.readFileSync(p, 'utf8');
       const creds = JSON.parse(raw);
       admin.initializeApp({ credential: admin.credential.cert(creds) });
