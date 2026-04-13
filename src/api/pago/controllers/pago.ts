@@ -44,14 +44,23 @@ export default factories.createCoreController('api::pago.pago', ({ strapi }) => 
 				return `${dd}/${mm}/${yyyy}`;
 			};
 
-			const buildPeriodo = (fecha?: string | null) => {
+			const buildPeriodo = (
+				fecha?: string | null,
+				diario?: boolean | string | null,
+				cantidadDias?: number | string | null,
+			) => {
 				const parsed = parseFecha(fecha);
 				if (!parsed) {
 					return fecha || null;
 				};
 
-				const daysToAdd = (parsed.getMonth() === 0 || parsed.getMonth() === 2 || parsed.getMonth() === 4 || parsed.getMonth() === 6 || parsed.getMonth() === 7 || parsed.getMonth() === 9 || parsed.getMonth() === 11)  ? 31 : 30;
-				console.log('Mes:', parsed.getMonth(), 'Días a sumar:', daysToAdd);
+				const isDiario = diario === true || diario === 'true';
+				const parsedCantidadDias = Number(cantidadDias);
+				const hasCantidadDias = isDiario && Number.isFinite(parsedCantidadDias) && parsedCantidadDias > 0;
+
+				const defaultDaysToAdd = (parsed.getMonth() === 0 || parsed.getMonth() === 2 || parsed.getMonth() === 4 || parsed.getMonth() === 6 || parsed.getMonth() === 7 || parsed.getMonth() === 9 || parsed.getMonth() === 11) ? 31 : 30;
+				const daysToAdd = hasCantidadDias ? parsedCantidadDias : defaultDaysToAdd;
+				console.log('Mes:', parsed.getMonth(), 'Días a sumar:', daysToAdd, 'Diario:', isDiario, 'Cantidad dias:', cantidadDias);
 				const next = new Date(parsed);
 				next.setDate(next.getDate() + daysToAdd);
 
@@ -61,7 +70,9 @@ export default factories.createCoreController('api::pago.pago', ({ strapi }) => 
 			const periodo = buildPeriodo(
 				response?.data?.attributes?.fecha_inicio_periodo ||
 				requestData?.fecha_inicio_periodo ||
-				null
+				null,
+				response?.data?.attributes?.diario ?? requestData?.diario ?? false,
+				response?.data?.attributes?.cantidad_dias ?? requestData?.cantidad_dias ?? null,
 			);
 
 			let userId: number | string | null = null;

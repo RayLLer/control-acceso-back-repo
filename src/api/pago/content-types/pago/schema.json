@@ -21,6 +21,12 @@
     },
     "fecha_inicio_periodo": {
       "type": "date"
+    },
+    "diario": {
+      "type": "boolean"
+    },
+    "cantidad_dias": {
+      "type": "integer"
     }
   }
 }

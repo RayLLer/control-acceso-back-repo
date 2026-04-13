@@ -503,9 +503,11 @@ export interface ApiPagoPago extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    cantidad_dias: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    diario: Schema.Attribute.Boolean;
     fecha_inicio_periodo: Schema.Attribute.Date;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::pago.pago'> &
