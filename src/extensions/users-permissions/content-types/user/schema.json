@@ -67,7 +67,8 @@
       "configurable": false
     },
     "numeroIdentificacion": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "nombreApellidos": {
       "type": "string"

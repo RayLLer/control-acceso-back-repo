@@ -7,7 +7,7 @@
     "displayName": "Custom Permission Role"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

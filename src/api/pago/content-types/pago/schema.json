@@ -7,7 +7,7 @@
     "displayName": "pago"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

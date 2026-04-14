@@ -439,7 +439,7 @@ export interface ApiCustomPermissiomCustomPermissiom
     singularName: 'custom-permissiom';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -468,7 +468,7 @@ export interface ApiCustomPermissionRoleCustomPermissionRole
     singularName: 'custom-permission-role';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -500,7 +500,7 @@ export interface ApiPagoPago extends Struct.CollectionTypeSchema {
     singularName: 'pago';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     cantidad_dias: Schema.Attribute.Integer;
@@ -532,7 +532,7 @@ export interface ApiPromoPromo extends Struct.SingleTypeSchema {
     singularName: 'promo';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -1029,7 +1029,7 @@ export interface PluginUsersPermissionsUser
     > &
       Schema.Attribute.Private;
     nombreApellidos: Schema.Attribute.String;
-    numeroIdentificacion: Schema.Attribute.String;
+    numeroIdentificacion: Schema.Attribute.String & Schema.Attribute.Unique;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{
